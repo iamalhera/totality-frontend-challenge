@@ -53,7 +53,7 @@ const Header: React.FC = () => {
               Log In
             </button>
           ) : (
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 hover:bg-gray-100 p-1 rounded-lg">
               {/* User name and photo */}
               <span
                 onClick={() => setShowDropdown(!showDropdown)}
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                     onClick={() => logout({
                       logoutParams: { returnTo: window.location.origin }
                     })}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100 "
                   >
                     Logout
                   </button>
