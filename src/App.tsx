@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
-import { Cart, Homepage, PropertyListing } from './pages';
+import { Cart, Homepage, PropertyListing, Wishlist } from './pages';
 import Checkout from './pages/Checkout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
@@ -26,6 +26,10 @@ const App: React.FC = () => {
         <Route
           path="/checkout"
           element={<ProtectedRoute component={Checkout} />}
+        />
+        <Route
+          path="/wishlist"
+          element={<ProtectedRoute component={Wishlist} />}
         />
         <Route
           path="/cart"

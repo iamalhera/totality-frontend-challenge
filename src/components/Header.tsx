@@ -37,8 +37,9 @@ const Header: React.FC = () => {
         <nav className="mb-2 sm:mb-0">
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6">
             <Link to="/" className="text-gray-600 hover:text-blue-600">Home</Link>
-            <Link to="/news" className="text-gray-600 hover:text-blue-600">News</Link>
-            <Link to="/property" className="text-gray-600 hover:text-blue-600">Property</Link>
+            <Link to="/" className="text-gray-600 hover:text-blue-600">News</Link>
+            <Link to="/property-listing" className="text-gray-600 hover:text-blue-600">Rental Properties</Link>
+            <Link to="/wishlist" className="text-gray-600 hover:text-blue-600">Your Favourites</Link>
           </div>
         </nav>
 
