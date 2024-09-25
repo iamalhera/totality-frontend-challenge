@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import Header from './components/Header';
+import { Cart, Homepage, PropertyListing } from './pages';
+import Checkout from './pages/Checkout';
+import ProtectedRoute from './components/ProtectedRoute';
+import Footer from './components/Footer';
+// import "./index.css";
+// import {PropertyListing} from './pages';
 // import Profile from './Profile';
 
 const App: React.FC = () => {
@@ -8,27 +15,24 @@ const App: React.FC = () => {
 
   console.log(user);
   return (
-    <div className="App">
-      <h1 className=''>Totality Frontend Challenge</h1>
-
-      {!isAuthenticated ? (
-        <button onClick={() => loginWithRedirect()}>Log In</button>
-      ) : (
-        <div>
-          <h3>Welcome, {user?.name}</h3>
-          <img src={user?.picture} height={100} width={100} style={{borderRadius: '50%'}}/>
-          <button><Link to={"/profile"}>Go to Profile</Link></button>
-          <button onClick={() => logout({
-            logoutParams: { returnTo: window.location.origin }
-          })}>
-            Log Out
-          </button>
-        </div>
-      )}
+    <div className="w-full">
+      <Header />
 
       <Routes>
-        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path='/' element={<Homepage />} />
+        <Route path='/property-listing' element={<PropertyListing />} />
+
+        {/* Protected routes */}
+        <Route
+          path="/checkout"
+          element={<ProtectedRoute component={Checkout} />}
+        />
+        <Route
+          path="/cart"
+          element={<ProtectedRoute component={Cart} />}
+        />
       </Routes>
+      <Footer />
     </div>
   );
 };
