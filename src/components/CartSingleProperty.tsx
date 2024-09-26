@@ -1,14 +1,17 @@
-import React from "react";
-import { Property } from "../types/property.types";
-import { useCart } from "../context/Context";
-interface SinglePropertyCardProps {
+import React from 'react'
+import { Property } from '../types/property.types';
+import { useCart } from '../context/Context';
+
+
+interface CartSinglePropertyCardProps {
     property: Property; // the type for your property
 }
-const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => {
-    let { title, description, amenities, isAvailable, price, image, totalBedrooms, location, totalRatings, rating, id } = property;
+const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property }) => {
+    let { title, description, isAvailable, price, amenities, image, totalBedrooms, location, totalRatings, rating, id } = property;
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
+
     return (
-        <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
+        <div className="max-w-80 bg-white border border-gray-200 rounded-lg shadow">
             <div className="relative">
                 <img className="w-full h-48 object-cover rounded-t-lg" src={image} alt="Skylight Condo" />
                 {/* --------wishlist--------- */}
@@ -31,7 +34,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                     payload: property
                                 })
                             }}
-                                className="fas fa-heart text-2xl absolute top-2 right-2 text-white hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
+                                className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                         )
                 }
                 {/* --------wishlist---------  */}
@@ -67,7 +70,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                     </div>
                 </div>
                 <div className="mt-4">
-                    {/* cart management */}
+                    {/* Cart Management */}
                     {
                         cart.some(prpty => prpty.id === id) ?
                             (
@@ -100,4 +103,4 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
     )
 }
 
-export default SinglePropertyCard;
+export default CartSingleProperty;

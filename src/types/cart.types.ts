@@ -14,11 +14,11 @@ interface CartState {
 }
 
 type CartAction =
-    //   { type: "ADD_TO_CART"; payload: Property }
-    // | { type: "REMOVE_FROM_CART"; payload: { id: number } }
+      { type: "ADD_TO_CART"; payload: Property }
+    | { type: "REMOVE_FROM_CART"; payload: { id: number } }
     | { type: "ADD_TO_WISHLIST"; payload: Property }
     | { type: "REMOVE_FROM_WISHLIST"; payload: { id: number } }
-    // | { type: "PROCEED_TO_CHECKOUT" }
+    | { type: "PROCEED_TO_CHECKOUT" }
 
 
 export type { CartState, CartAction, CartContextProps}

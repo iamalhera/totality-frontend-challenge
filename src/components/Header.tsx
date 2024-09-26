@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useCart } from '../context/Context';
 
 const Header: React.FC = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [showDropdown, setShowDropdown] = useState(false);
+  const { cartState: { wishlist, cart } } = useCart();
+  console.log(cart.length, "INSIDE HEADER");
   const dropdownRef = useRef<HTMLDivElement | null>(null); // Ref for dropdown
   // console.log({user});
   // Effect to handle clicks outside the dropdown
@@ -27,7 +30,7 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-md py-4">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6">
-        
+
         {/* Logo / Title */}
         <div className="mb-2 sm:mb-0">
           <Link to="/" className="text-2xl font-bold text-blue-600">StayEase</Link>
@@ -39,8 +42,16 @@ const Header: React.FC = () => {
             <Link to="/" className="text-gray-600 hover:text-blue-600">Home</Link>
             <Link to="/" className="text-gray-600 hover:text-blue-600">News</Link>
             <Link to="/property-listing" className="text-gray-600 hover:text-blue-600">Rental Properties</Link>
-            <Link to="/wishlist" className="text-gray-600 hover:text-blue-600">My Favourites</Link>
-            <Link to="/cart" className="text-gray-600 hover:text-blue-600">My Cart</Link>
+            <Link
+              to="/wishlist"
+              className="text-gray-600 hover:text-blue-600 relative">
+              {wishlist.length > 0 ? <span className='text-xs flex items-center justify-center text-white absolute h-6 w-6 rounded-full bg-red-500 -top-3 -right-5 '>{wishlist.length}</span> : <></>}
+              My Favourites</Link>
+            <Link
+              to="/cart"
+              className="text-gray-600 hover:text-blue-600 relative">
+              {cart.length > 0 ? <span className='text-xs flex items-center justify-center text-white absolute h-6 w-6 rounded-full bg-red-500 -top-3 -right-5 '>{cart.length}</span> : <></>}
+              Cart</Link>
           </div>
         </nav>
 

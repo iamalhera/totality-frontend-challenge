@@ -1,11 +1,10 @@
 import React from 'react';
-import { useCart } from '../context/Context';
-import WishlistSingleProduct from '../components/WishlistSingleProduct'; // Assuming this component is correctly set up
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/Context';
+import WishlistSingleProperty from '../components/WishlistSingleProperty';
 
 const Wishlist: React.FC = () => {
   const { cartState: { wishlist } } = useCart();
-
 
   return (
     <div className="flex flex-col items-center p-6">
@@ -25,7 +24,7 @@ const Wishlist: React.FC = () => {
       {wishlist.length > 0 && (
         <div className='flex justify-center flex-wrap gap-4 mx-8'>
           {wishlist.map((wishprprty) => (
-            <WishlistSingleProduct key={wishprprty.id} property={wishprprty} />
+            <WishlistSingleProperty key={wishprprty.id} property={wishprprty} />
           ))}
         </div>
       )}

@@ -5,23 +5,16 @@ import { PropertyAction, PropertyState } from "../types/property.types";
 // Cart reducer function
 export const cartReducerFunc = (state: CartState, action: CartAction): CartState => {
     switch (action.type) {
-        // case "ADD_TO_CART":
-            // return { ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] };
-        // case "REMOVE_FROM_CART":
-            // return { ...state, cart: state.cart.filter((c) => c.id !== action.payload.id) };
+        case "ADD_TO_CART":
+            return { ...state, cart: [...state.cart, { ...action.payload }] };
+        case "REMOVE_FROM_CART":
+            return { ...state, cart: state.cart.filter((c) => c.id !== action.payload.id) };
         case "ADD_TO_WISHLIST":
             return { ...state, wishlist: [...state.wishlist, { ...action.payload }] };
         case "REMOVE_FROM_WISHLIST":
             return { ...state, wishlist: state.wishlist.filter((c) => c.id !== action.payload.id) };
         // case "PROCEED_TO_CHECKOUT":
             // return { ...state, cart: [] };
-        // case "CHANGE_CART_QTY":
-        //     return {
-        //         ...state,
-        //         cart: state.cart.map(c =>
-        //             c.id === action.payload.id ? { ...c, qty: action.payload.qty } : c
-        //         )
-        //     };
         default:
             return state;
     }

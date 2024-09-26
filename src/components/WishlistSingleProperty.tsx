@@ -6,11 +6,10 @@ import { useCart } from '../context/Context';
 interface WishlistSinglePropertyCardProps {
     property: Property; // the type for your property
 }
-const WishlistSingleProduct: React.FC<WishlistSinglePropertyCardProps> = ({ property }) => {
+const WishlistSingleProperty: React.FC<WishlistSinglePropertyCardProps> = ({ property }) => {
     let { title, description, isAvailable, price, amenities, image, totalBedrooms, location, totalRatings, rating, id } = property;
     const {cartState : {cart, wishlist}, cartDispatch } = useCart();
 
-// const WishlistSingleProduct: React.FC = ({product}) => {
   return (
     <div className="max-w-80 bg-white border border-gray-200 rounded-lg shadow">
             <div className="relative">
@@ -38,10 +37,6 @@ const WishlistSingleProduct: React.FC<WishlistSinglePropertyCardProps> = ({ prop
                             className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                     )
                 }
-                {/* <i
-                    onClick={() =>{ console.log("clicked wishlist") }}
-                    className="fas fa-heart text-2xl absolute top-2 right-2 text-white hover:text-red-600 cursor-pointer"
-                ></i> */}
                 {/* --------wishlist---------  */}
             </div>
             <div className="p-4">
@@ -75,6 +70,7 @@ const WishlistSingleProduct: React.FC<WishlistSinglePropertyCardProps> = ({ prop
                     </div>
                 </div>
                 <div className="mt-4">
+                    {/* cart management */}
                     <button
                         disabled={isAvailable ? false: true}
                         className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block": " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
@@ -85,4 +81,4 @@ const WishlistSingleProduct: React.FC<WishlistSinglePropertyCardProps> = ({ prop
   )
 }
 
-export default WishlistSingleProduct
+export default WishlistSingleProperty;
