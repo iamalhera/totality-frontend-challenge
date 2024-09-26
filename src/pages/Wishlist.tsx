@@ -11,7 +11,7 @@ const Wishlist: React.FC = () => {
       {/* Conditional Rendering when Wishlist is Empty */}
       {wishlist.length === 0 && (
         <h2 className="text-xl font-semibold text-gray-600 mt-4 flex flex-col items-center">
-          Wishlist is empty!
+          My Favourites is empty!
           <br />
           <Link
             className="mt-7 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"

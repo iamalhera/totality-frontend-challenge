@@ -2,6 +2,7 @@ import React from "react";
 import { Property } from "../types/property.types";
 import { useCart } from "../context/Context";
 import { useAuth0 } from "@auth0/auth0-react";
+import { toast } from "react-toastify";
 interface SinglePropertyCardProps {
     property: Property; // the type for your property
 }
@@ -26,6 +27,17 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                     type: "REMOVE_FROM_WISHLIST",
                                     payload: property
                                 })
+                                toast.info('Removed from My favourites!', {
+                                    position: "top-right",
+                                    autoClose: 4000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "light",
+                                  });
+                                //   console.log("main chal gaya");
                             }}
                                 className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                         ) : (
@@ -33,11 +45,21 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                 if (!isAuthenticated) {
                                     alert("Please Login to your account");
                                     return;
-                                } 
+                                }
                                 cartDispatch({
                                     type: "ADD_TO_WISHLIST",
                                     payload: property
                                 })
+                                toast.success('Added to My favourites!', {
+                                    position: "top-right",
+                                    autoClose: 4000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "light",
+                                  });
                             }}
                                 className="fas fa-heart text-2xl absolute top-2 right-2 text-white hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                         )
@@ -89,6 +111,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                             type: "REMOVE_FROM_CART",
                                             payload: property
                                         })
+                                        toast.info('Removed from Cart!', {
+                                            position: "top-right",
+                                            autoClose: 4000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                          });
                                     }}
                                     disabled={isAvailable ? false : true}
                                     className={isAvailable ? "text-white bg-red-600 hover:bg-red-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
@@ -104,6 +136,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                             type: "ADD_TO_CART",
                                             payload: property
                                         })
+                                        toast.success('Added to Cart!', {
+                                            position: "top-right",
+                                            autoClose: 4000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                          });
                                     }}
                                     disabled={isAvailable ? false : true}
                                     className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Property } from '../types/property.types';
 import { useCart } from '../context/Context';
+import { toast } from 'react-toastify';
 
 
 interface WishlistSinglePropertyCardProps {
@@ -24,6 +25,16 @@ const WishlistSingleProperty: React.FC<WishlistSinglePropertyCardProps> = ({ pro
                                 type: "REMOVE_FROM_WISHLIST",
                                 payload: property
                             })
+                            toast.info('Removed from My Favourites!', {
+                                position: "top-right",
+                                autoClose: 4000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                              });
                         }}
                             className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                     ) : (
@@ -71,10 +82,42 @@ const WishlistSingleProperty: React.FC<WishlistSinglePropertyCardProps> = ({ pro
                 </div>
                 <div className="mt-4">
                     {/* cart management */}
-                    <button
-                        disabled={isAvailable ? false: true}
-                        className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block": " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
-                    >Add to Cart</button>
+                    {
+                        cart.some(prpty => prpty.id === id) ?
+                            (
+                                <button
+                                    onClick={() => {
+                                        // cartDispatch({
+                                        //     type: "REMOVE_FROM_CART",
+                                        //     payload: property
+                                        // })
+                                    }}
+                                    disabled={isAvailable ? false : true}
+                                    className={isAvailable ? "text-white bg-green-600 hover:bg-green-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
+                                >Already In Cart</button>
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        cartDispatch({
+                                            type: "ADD_TO_CART",
+                                            payload: property
+                                        })
+                                        toast.success('Added to Cart!', {
+                                            position: "top-right",
+                                            autoClose: 4000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                          });
+                                    }}
+                                    disabled={isAvailable ? false : true}
+                                    className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
+                                >Add to Cart</button>
+                            )
+                    }
                 </div>
             </div>
         </div>

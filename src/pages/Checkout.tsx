@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/Context';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 interface BookingDetails {
   fullName: string;
@@ -41,6 +42,16 @@ const Checkout: React.FC = () => {
           type: 'PROCEED_TO_PAY',
         });
         navigate("/");
+        toast.success('😊 Payment Successfull!! ', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }, 2000); // 2 seconds delay
     }
   };
@@ -216,12 +227,12 @@ const Checkout: React.FC = () => {
             <span>${amount}/week</span>
           </div>
           <div className="flex justify-between mt-2">
-            <span>Tax</span>
-            <span>${amount * .25}</span>
+            <span>GST(18%)</span>
+            <span>${(amount * .18).toFixed(2)}</span>
           </div>
           <div className="flex justify-between mt-2">
             <span>Total Price</span>
-            <span>${amount * 1.25}</span>
+            <span>${(amount * 1.18).toFixed(2)}</span>
           </div>
 
           <button

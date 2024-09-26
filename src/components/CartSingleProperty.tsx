@@ -1,6 +1,7 @@
 import React from 'react'
 import { Property } from '../types/property.types';
 import { useCart } from '../context/Context';
+import { toast } from 'react-toastify';
 
 
 interface CartSinglePropertyCardProps {
@@ -82,6 +83,16 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                                             type: "REMOVE_FROM_CART",
                                             payload: property
                                         })
+                                        toast.error('Removed from Cart!', {
+                                            position: "top-right",
+                                            autoClose: 4000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: "light",
+                                          });
                                     }}
                                     disabled={isAvailable ? false : true}
                                     className={isAvailable ? "text-white bg-red-600 hover:bg-red-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
@@ -93,6 +104,7 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                                             type: "ADD_TO_CART",
                                             payload: property
                                         })
+                                       
                                     }}
                                     disabled={isAvailable ? false : true}
                                     className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
