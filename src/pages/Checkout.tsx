@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/Context';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface BookingDetails {
   fullName: string;
@@ -14,7 +14,9 @@ interface BookingDetails {
   paymentMethod: string;
 }
 const Checkout: React.FC = () => {
+  const navigate = useNavigate(); // Navigate to payment route
   const { user } = useAuth0();
+  const [loadingText, setLoadingText] = useState(''); // State for loading text
   const { cartDispatch, cartState: { cart } } = useCart();
   const [confirmBooking, setConfirmBooking] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(0);
@@ -30,6 +32,18 @@ const Checkout: React.FC = () => {
   });
 
 
+  const handlePayment = () => {
+    if (confirmBooking) {
+      setLoadingText('Loading...'); // Set loading text
+      setTimeout(() => {
+        setLoadingText(''); // Clear loading text after 2 seconds
+        cartDispatch({
+          type: 'PROCEED_TO_PAY',
+        });
+        navigate("/");
+      }, 2000); // 2 seconds delay
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -211,17 +225,20 @@ const Checkout: React.FC = () => {
           </div>
 
           <button
-            onClick={() => {
-              cartDispatch({
-                type: "PROCEED_TO_PAY",
-              })
-            }}
-            disabled={confirmBooking}
-            title={!confirmBooking ? "Please Confirm Your Booking First" : "Now You can Proceed"}
-            className={!confirmBooking ? "bg-gray-500 text-white px-6 py-2 rounded  mt-6 w-full cursor-default" : "bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 mt-6 w-full cursor-pointer"}>
-            <Link to="/" className='text-white'>
-              Proceed to Payment
-            </Link>
+            onClick={handlePayment}
+            disabled={!confirmBooking || loadingText !== ''}
+            title={!confirmBooking ? 'Please Confirm Your Booking First' : 'Now You can Proceed'}
+            className={
+              !confirmBooking
+                ? 'bg-gray-500 text-white px-6 py-2 rounded mt-6 w-full cursor-not-allowed'
+                : 'bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 mt-6 w-full cursor-pointer'
+            }
+          >
+            {loadingText ? (
+              <span>{loadingText}</span> // Show loading text
+            ) : (
+              <span>Proceed to Payment</span> // Normal button text
+            )}
           </button>
         </div>
       </div>

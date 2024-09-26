@@ -1,12 +1,14 @@
 import React from "react";
 import { Property } from "../types/property.types";
 import { useCart } from "../context/Context";
+import { useAuth0 } from "@auth0/auth0-react";
 interface SinglePropertyCardProps {
     property: Property; // the type for your property
 }
 const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => {
     let { title, description, amenities, isAvailable, price, image, totalBedrooms, location, totalRatings, rating, id } = property;
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
+    const { isAuthenticated } = useAuth0();
     return (
         <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
             <div className="relative">
@@ -16,7 +18,10 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                     wishlist.some(prty => prty.id === id) ?
                         (
                             <i onClick={() => {
-                                console.log("clicked REMOVE_FROM_WISHLIST")
+                                if (!isAuthenticated) {
+                                    alert("Please Login to your account");
+                                    return;
+                                }
                                 cartDispatch({
                                     type: "REMOVE_FROM_WISHLIST",
                                     payload: property
@@ -25,7 +30,10 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                 className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                         ) : (
                             <i onClick={() => {
-                                console.log("clicked ADD_TO_WISHLIST")
+                                if (!isAuthenticated) {
+                                    alert("Please Login to your account");
+                                    return;
+                                } 
                                 cartDispatch({
                                     type: "ADD_TO_WISHLIST",
                                     payload: property
@@ -58,8 +66,8 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <span className="text-xl font-semibold text-black mb-2 sm:mb-0">${price}</span><span className="text-xs">/week</span>
                     <div className="flex flex-col items-start sm:items-end">
-                    <span className="text-sm text-gray-600">{totalBedrooms} { totalBedrooms==1?"Bedroom":"Bedrooms"}</span>
-                    <div className="flex flex-wrap justify-start sm:justify-end gap-1 mt-1">
+                        <span className="text-sm text-gray-600">{totalBedrooms} {totalBedrooms == 1 ? "Bedroom" : "Bedrooms"}</span>
+                        <div className="flex flex-wrap justify-start sm:justify-end gap-1 mt-1">
                             {amenities.map((amenity, index) => (
                                 <span key={index} className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded">{amenity}</span>
                             ))}
@@ -73,6 +81,10 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                             (
                                 <button
                                     onClick={() => {
+                                        if (!isAuthenticated) {
+                                            alert("Please Login to your account");
+                                            return;
+                                        }
                                         cartDispatch({
                                             type: "REMOVE_FROM_CART",
                                             payload: property
@@ -84,6 +96,10 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                             ) : (
                                 <button
                                     onClick={() => {
+                                        if (!isAuthenticated) {
+                                            alert("Please Login to your account");
+                                            return;
+                                        }
                                         cartDispatch({
                                             type: "ADD_TO_CART",
                                             payload: property
