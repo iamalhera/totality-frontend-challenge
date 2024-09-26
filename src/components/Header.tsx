@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null); // Ref for dropdown
-
+  // console.log({user});
   // Effect to handle clicks outside the dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

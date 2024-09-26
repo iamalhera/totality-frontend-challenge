@@ -1,19 +1,12 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import { Cart, Homepage, PropertyListing, Wishlist } from './pages';
+import { Cart, Homepage, NotFound, PropertyListing, Wishlist } from './pages';
 import Checkout from './pages/Checkout';
 import ProtectedRoute from './components/ProtectedRoute';
-import Footer from './components/Footer';
-// import "./index.css";
-// import {PropertyListing} from './pages';
-// import Profile from './Profile';
 
 const App: React.FC = () => {
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
-  console.log(user);
   return (
     <div className="w-full">
       <Header />
@@ -35,8 +28,10 @@ const App: React.FC = () => {
           path="/cart"
           element={<ProtectedRoute component={Cart} />}
         />
+
+        {/* not found route */}
+        <Route path='*' element={<NotFound />} />
       </Routes>
-      <Footer />
     </div>
   );
 };

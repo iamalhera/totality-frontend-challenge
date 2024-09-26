@@ -11,7 +11,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component })
 
   // If authentication is still loading, you can show a spinner/loader
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className='text-center'>Loading...</div>;
   }
 
   // If the user is not authenticated, redirect to the login page
