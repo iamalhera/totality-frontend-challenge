@@ -21,3 +21,27 @@ a{
   text-decoration: none;
   color: black;
 }
+
+/*  custom scrollbar */
+/* Target the entire scrollbar */
+::-webkit-scrollbar {
+  width: 12px;  /* width of the scrollbar */
+}
+
+/* Style the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* light background color */
+  border-radius: 10px;   /* rounded track */
+}
+
+/* Style the draggable part (thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(37, 99, 235);  /* blue thumb color */
+  border-radius: 10px;  /* round edges */
+  border: 3px solid #f1f1f1; /* add space between thumb and track */
+}
+
+/* Optional: hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #007bff;  /* change color on hover */
+}
