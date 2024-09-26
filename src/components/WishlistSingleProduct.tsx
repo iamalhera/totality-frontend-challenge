@@ -1,14 +1,18 @@
-import React from "react";
-import { Property } from "../types/property.types";
-import { useCart } from "../context/Context";
-interface SinglePropertyCardProps {
+import React from 'react'
+import { Property } from '../types/property.types';
+import { useCart } from '../context/Context';
+
+
+interface WishlistSinglePropertyCardProps {
     property: Property; // the type for your property
 }
-const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => {
-    let { title, description, amenities, isAvailable, price, image, totalBedrooms, location, totalRatings, rating, id } = property;
-      const {cartState : {cart, wishlist}, cartDispatch } = useCart();
-    return (
-        <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
+const WishlistSingleProduct: React.FC<WishlistSinglePropertyCardProps> = ({ property }) => {
+    let { title, description, isAvailable, price, amenities, image, totalBedrooms, location, totalRatings, rating, id } = property;
+    const {cartState : {cart, wishlist}, cartDispatch } = useCart();
+
+// const WishlistSingleProduct: React.FC = ({product}) => {
+  return (
+    <div className="max-w-80 bg-white border border-gray-200 rounded-lg shadow">
             <div className="relative">
                 <img className="w-full h-48 object-cover rounded-t-lg" src={image} alt="Skylight Condo" />
                 {/* --------wishlist--------- */}
@@ -31,7 +35,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                 payload: property
                             })
                         }}
-                            className="fas fa-heart text-2xl absolute top-2 right-2 text-white hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
+                            className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                     )
                 }
                 {/* <i
@@ -57,8 +61,6 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                         </svg>
                     </div>
-                    {/* <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3"> */}
-                    {/* </span> */}
                     <span className="text-xs text-gray-500 ml-2">({totalRatings} ratings)</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -80,7 +82,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                 </div>
             </div>
         </div>
-    )
+  )
 }
 
-export default SinglePropertyCard;
+export default WishlistSingleProduct
