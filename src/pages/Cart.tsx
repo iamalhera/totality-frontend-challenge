@@ -6,9 +6,9 @@ import CartSingleProperty from '../components/CartSingleProperty';
 const Cart: React.FC = () => {
   const { cartState: { cart } } = useCart();
 
-
   return (
     <div className="flex flex-col items-center p-6">
+
       {/* Conditional Rendering when Cart is Empty */}
       {cart.length === 0 && (
         <h2 className="text-xl font-semibold text-gray-600 mt-4 flex flex-col items-center">

@@ -4,6 +4,7 @@ import { useCart } from '../context/Context';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+//types for all the booking details
 interface BookingDetails {
   fullName: string;
   email: string;
@@ -14,16 +15,17 @@ interface BookingDetails {
   country: string;
   paymentMethod: string;
 }
+
 const Checkout: React.FC = () => {
-  const navigate = useNavigate(); // Navigate to payment route
-  const { user } = useAuth0();
+  const navigate = useNavigate(); // to navigate to any route
+  const { user } = useAuth0(); // API from auth
   const [loadingText, setLoadingText] = useState(''); // State for loading text
-  const { cartDispatch, cartState: { cart } } = useCart();
-  const [confirmBooking, setConfirmBooking] = useState<boolean>(false);
-  const [amount, setAmount] = useState<number>(0);
+  const { cartDispatch, cartState: { cart } } = useCart(); // Data and action from ContextAPI
+  const [confirmBooking, setConfirmBooking] = useState<boolean>(false); // to check whether the form is filled or not
+  const [amount, setAmount] = useState<number>(0); // to store amount
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
-    fullName: user?.name ? user?.name : '',
-    email: user?.email ? user?.email : '',
+    fullName: user?.name ? user?.name : '', //conditional checking of name from auth0
+    email: user?.email ? user?.email : '', // conditional checking of email from auth0
     phone: '',
     address: '',
     city: '',
@@ -33,7 +35,7 @@ const Checkout: React.FC = () => {
   });
 
 
-  const handlePayment = () => {
+  const handlePayment = () => { //payment handler for the "Proceed to Pay" button
     if (confirmBooking) {
       setLoadingText('Loading...'); // Set loading text
       setTimeout(() => {
@@ -41,7 +43,7 @@ const Checkout: React.FC = () => {
         cartDispatch({
           type: 'PROCEED_TO_PAY',
         });
-        navigate("/");
+        navigate("/"); //after successfull payment we are routing to "/"
         toast.success('😊 Payment Successfull!! ', {
           position: "top-right",
           autoClose: 4000,
@@ -62,18 +64,17 @@ const Checkout: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setConfirmBooking(true);
-    // Submit booking details logic here
-    console.log('Booking Details:', bookingDetails);
+    e.preventDefault(); // if any field of the form is empty this will prevent from enabling "Proceed to Payment"
+    setConfirmBooking(true); // this will activate the button "Proceed to payment"
   };
-  useEffect(() => {
+
+  useEffect(() => { // to calculate the amount from the cart item
     let calculatedAmount = 0
 
     for (let el of cart) {
       calculatedAmount += Number(el.price);
     }
-    setAmount(calculatedAmount);
+    setAmount(calculatedAmount); // and setting it to a state related to it
   }, [])
 
   return (
@@ -237,9 +238,9 @@ const Checkout: React.FC = () => {
 
           <button
             onClick={handlePayment}
-            disabled={!confirmBooking || loadingText !== ''}
+            disabled={!confirmBooking || loadingText !== ''}  
             title={!confirmBooking ? 'Please Confirm Your Booking First' : 'Now You can Proceed'}
-            className={
+            className={  
               !confirmBooking
                 ? 'bg-gray-500 text-white px-6 py-2 rounded mt-6 w-full cursor-not-allowed'
                 : 'bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 mt-6 w-full cursor-pointer'

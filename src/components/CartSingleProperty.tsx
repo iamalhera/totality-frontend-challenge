@@ -7,6 +7,9 @@ import { toast } from 'react-toastify';
 interface CartSinglePropertyCardProps {
     property: Property; // the type for your property
 }
+// this Component is for the Product display on the "/cart" route
+//[NOTE]: on Cart Page we can't do manipulation of wishlist items
+
 const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property }) => {
     let { title, description, isAvailable, price, amenities, image, totalBedrooms, location, totalRatings, rating, id } = property;
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
@@ -19,25 +22,9 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                 {
                     wishlist.some(prty => prty.id === id) ?
                         (
-                            <i 
-                            // onClick={() => {
-                            //     console.log("clicked REMOVE_FROM_WISHLIST")
-                            //     cartDispatch({
-                            //         type: "REMOVE_FROM_WISHLIST",
-                            //         payload: property
-                            //     })
-                            // }}
-                                className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
+                            <i className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                         ) : (
-                            <i 
-                            // onClick={() => {
-                            //     console.log("clicked ADD_TO_WISHLIST")
-                            //     cartDispatch({
-                            //         type: "ADD_TO_WISHLIST",
-                            //         payload: property
-                            //     })
-                            // }}
-                                className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
+                            <i className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                         )
                 }
                 {/* --------wishlist---------  */}
@@ -75,6 +62,7 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                 <div className="mt-4">
                     {/* Cart Management */}
                     {
+                        //checking for every item 'cart [state]' has to the property-id passed from the Cart Management Page
                         cart.some(prpty => prpty.id === id) ?
                             (
                                 <button

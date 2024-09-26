@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  // a simple footer from tailwindcss
   return (
     <footer className="bg-white">
       <div className="mx-auto w-full ">

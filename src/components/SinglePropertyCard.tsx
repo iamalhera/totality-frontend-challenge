@@ -16,9 +16,11 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                 <img className="w-full h-48 object-cover rounded-t-lg" src={image} alt="Skylight Condo" />
                 {/* --------wishlist--------- */}
                 {
+                    // demarkation of wishlist product who are in my global state "cartState: {wishlist}"
                     wishlist.some(prty => prty.id === id) ?
                         (
                             <i onClick={() => {
+//---------- this is to to show warning for the users who are not logged in and cannot have wishlist----------
                                 if (!isAuthenticated) {
                                     toast.error('Please, Login to your account!', {
                                         position: "top-right",
@@ -46,7 +48,6 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                     progress: undefined,
                                     theme: "light",
                                   });
-                                //   console.log("main chal gaya");
                             }}
                                 className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                         ) : (
@@ -121,6 +122,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                             (
                                 <button
                                     onClick={() => {
+// ----------this is for the user who are not logged in - hence can do manipulation of cart--------------------
                                         if (!isAuthenticated) {
                                             toast.error('Please, Login to your account!', {
                                                 position: "top-right",

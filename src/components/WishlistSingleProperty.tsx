@@ -20,7 +20,6 @@ const WishlistSingleProperty: React.FC<WishlistSinglePropertyCardProps> = ({ pro
                     wishlist.some(prty => prty.id === id ) ? 
                     (
                         <i onClick={() => {
-                            console.log("clicked REMOVE_FROM_WISHLIST")
                             cartDispatch({
                                 type: "REMOVE_FROM_WISHLIST",
                                 payload: property
@@ -39,7 +38,6 @@ const WishlistSingleProperty: React.FC<WishlistSinglePropertyCardProps> = ({ pro
                             className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                     ) : (
                         <i onClick={() => {
-                            console.log("clicked ADD_TO_WISHLIST")
                             cartDispatch({
                                 type: "ADD_TO_WISHLIST",
                                 payload: property

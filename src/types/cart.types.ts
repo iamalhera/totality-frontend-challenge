@@ -1,18 +1,19 @@
 import { Property, PropertyAction, PropertyState } from "./property.types";
 
+//types for the context creation
 interface CartContextProps {
     cartState: CartState;
-    cartDispatch: React.Dispatch<CartAction>; // Replace 'any' with the appropriate action type
+    cartDispatch: React.Dispatch<CartAction>; 
     propertyState: PropertyState;
-    propertyDispatch: React.Dispatch<PropertyAction>; // Replace 'any' with the appropriate action type
+    propertyDispatch: React.Dispatch<PropertyAction>; 
 }
-
+// types for my all state
 interface CartState {
     propertyData: Property[];
     cart: Property[];
     wishlist: Property[];
 }
-
+// types for the action of Cart / Wishlist management
 type CartAction =
       { type: "ADD_TO_CART"; payload: Property }
     | { type: "REMOVE_FROM_CART"; payload: { id: number } }

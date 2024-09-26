@@ -1,3 +1,4 @@
+// this file and its code is to make the import of images in one line
 import prop1 from "../assets/images/prop1.png";
 import prop2 from "../assets/images/prop2.png";
 import prop3 from "../assets/images/prop3.png";

@@ -1,5 +1,5 @@
 import { images } from "../constants";
-
+// Array of Object DataSet - since i am using locally stored data
 const PropertyData = {
   data: [
     {

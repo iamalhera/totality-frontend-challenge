@@ -7,6 +7,7 @@ import { Property } from '../types/property.types';
 import { toast } from 'react-toastify';
 
 const PropertyListing: React.FC = () => {
+  // here we are having the propertyData and propertyState
   const {
     cartState: { propertyData },
     propertyState: { underPrice, isAvailable, numberOfBedroom, haveGym, haveParking, haveBalcony, havePool, haveWifi, searchQueryForLocation }
@@ -14,7 +15,7 @@ const PropertyListing: React.FC = () => {
 
   // Function to transform products based on filters
   const transformedProducts = (): Property[] => {
-    let sortedProducts: Property[] = propertyData; // Make a copy of the products array
+    let sortedProducts: Property[] = propertyData; // before passign to the components transforming the array of objects here
 
     // --------------Filtering for price ---------------
     if (underPrice) {
@@ -54,6 +55,7 @@ const PropertyListing: React.FC = () => {
         prod.location.toLowerCase().includes(searchQueryForLocation.toLowerCase())
       );
     }
+    // -----------if upon filter no product is there---------------------
     if (sortedProducts.length == 0 && (haveGym || haveBalcony || haveBalcony || haveParking || haveWifi)) {
       toast.warn('Unfortunately, we don\'t have property of this selection!', {
         position: "top-right",
@@ -66,6 +68,7 @@ const PropertyListing: React.FC = () => {
         theme: "light",
       });
     }
+    // ------------------if upon all the amenties are deselected-------------------
     if(!havePool && !haveGym && !haveBalcony && !haveParking && !haveWifi){
       toast.warn('Please Select atleast on amenity!', {
         position: "top-right",
@@ -83,13 +86,13 @@ const PropertyListing: React.FC = () => {
   };
 
   return (
-    // Parent
     <div className="product-listing-component">
       <div className="parentoffilterAndProductContainer flex flex-col md:flex-row">
         <FilterSection />
         <div className="product-container flex-grow bg-white p-4">
           <div className='grid grid-cols-1 mx-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
             {
+              // tranformed product data goes to SinglePropertyCard
               transformedProducts().map((prop) => {
                 return (
                   <SinglePropertyCard property={prop} key={prop.id} />
@@ -97,14 +100,11 @@ const PropertyListing: React.FC = () => {
               })
 
             }
-            {/* {
-              !havePool && !haveGym && !haveBalcony && !haveParking && !haveWifi &&
-              <div className='text-center text-2xl'>Please Select atleast 1 Amenity</div>
-            } */}
           </div>
 
         </div>
       </div>
+      {/* footer are not on every page but to specific pages, but will be here in this component */}
       <Footer />
     </div>
   );

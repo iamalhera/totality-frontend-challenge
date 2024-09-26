@@ -7,6 +7,8 @@ import './index.css';
 import { CartProvider } from './context/Context';
 import { ToastContainer } from 'react-toastify';
 
+//[NOTE] :- change my URls from auth0
+// domain and client id is in my environment variable
 const domain = import.meta.env.VITE_AUTH0_DOMAIN as string;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID as string;
 

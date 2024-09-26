@@ -32,21 +32,22 @@ const CartProvider: React.FC<{ children: ReactNode  }> = ({ children }) => {
         searchQueryForLocation: ""
     };
     const propertyData: Property[] = PropertyData.data; // Using the dataset provided
-
+    // first reducer function for the cart and total state management management
     const [cartState, cartDispatch] = useReducer(cartReducerFunc, {
-        //initial State of propertyData, cart and wishlist
+        //initial State of propertyData, cart and wishlist <-- this is provided to the whole application
         propertyData: propertyData,
         cart: [],
         wishlist: [],
     });
-
+    // second reducer function for the filtering of properties based on amenities and so on
     const [propertyState, propertyDispatch] = useReducer(propertyReducerFunc, initialPropertyState);
     
+    // note always create .tsx file for the context in order to be able to create HTML elements [wasted 4 hours just for that]
     return (
         <CartContext.Provider value={{ propertyState,cartState, cartDispatch, propertyDispatch }}> 
             {children}
         </CartContext.Provider>
     );
 };
-
+// CartProvider for the elveloping of app & useCart for the availibility of state and actions based upon those state changes
 export { useCart, CartProvider };

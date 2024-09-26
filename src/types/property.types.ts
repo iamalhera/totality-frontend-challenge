@@ -1,3 +1,4 @@
+// types for my Property State - state management
 interface PropertyState {
     underPrice: number, //for slider [Price Range]
     isAvailable: boolean,
@@ -10,7 +11,7 @@ interface PropertyState {
     haveBalcony: boolean,
     searchQueryForLocation: string;
 }
-
+//types for my action - filter section
 type PropertyAction =
       { type: "FILTER_BY_PRICE"; payload: number }
     | { type: "FILTER_BY_AVAILABILITY" }
@@ -24,12 +25,13 @@ type PropertyAction =
     | { type: "FILTER_BY_SEARCH_FOR_LOCATION"; payload: string }
     | { type: "CLEAR_FILTERS" };
 
+    // types for my Original Property Object - [Property, Property]
     interface Property {
         id: number;
         description: string;
         title: string;
         price: number;
-        image: any; // Adjust type based on how you're storing images
+        image: any; // let it be will fix this later
         amenities: string[];
         totalBedrooms: number;
         isAvailable: boolean;

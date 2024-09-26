@@ -1,8 +1,8 @@
 import { CartAction, CartState } from "../types/cart.types";
 import { PropertyAction, PropertyState } from "../types/property.types";
-// Define types for actions
 
-// Cart reducer function
+
+// Cart reducer function -> actions related to wishlist / cart mangement even removal of all the cart elements
 export const cartReducerFunc = (state: CartState, action: CartAction): CartState => {
     switch (action.type) {
         case "ADD_TO_CART":
@@ -24,7 +24,7 @@ export const cartReducerFunc = (state: CartState, action: CartAction): CartState
 export const propertyReducerFunc = (state: PropertyState, action: PropertyAction): PropertyState => {
     switch (action.type) {
         case "FILTER_BY_PRICE": //[DONE WITH INTEGRATION ]
-            return { ...state, underPrice: action.payload }; // 
+            return { ...state, underPrice: action.payload }; 
         case "FILTER_BY_AVAILABILITY": //[DONE WITH INTEGRATION]
             return { ...state, isAvailable: !state.isAvailable };
         case "FILTER_BY_NO_OF_BEDROOM": // [DONE WITH INTEGRATION]
@@ -43,7 +43,7 @@ export const propertyReducerFunc = (state: PropertyState, action: PropertyAction
             
         case "FILTER_BY_SEARCH_FOR_LOCATION":  //[DONW WITH LOCATION]
             return { ...state, searchQueryForLocation: action.payload };
-        case "CLEAR_FILTERS":
+        case "CLEAR_FILTERS": // this clear filter value is same as the initial state of my propertyState
             return {
                 underPrice: 2999,
                 isAvailable: false,
