@@ -21,7 +21,7 @@ const useCart = () => {
 const CartProvider: React.FC<{ children: ReactNode  }> = ({ children }) => {
 
     const initialPropertyState: PropertyState = {
-        underPrice: 1999,
+        underPrice: 2999,
         isAvailable: false,
         numberOfBedroom: 2,
         haveGym: false,

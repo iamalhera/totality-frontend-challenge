@@ -29,7 +29,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-white shadow-md py-4">
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6">
+      <div className="container mx-auto flex flex-col sm:flex-row items-start justify-between sm:items-center px-6">
 
         {/* Logo / Title */}
         <div className="mb-2 sm:mb-0">

@@ -20,7 +20,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                         (
                             <i onClick={() => {
                                 if (!isAuthenticated) {
-                                    alert("Please Login to your account");
+                                    toast.error('Please, Login to your account!', {
+                                        position: "top-right",
+                                        autoClose: 4000,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                        theme: "light",
+                                      });
                                     return;
                                 }
                                 cartDispatch({
@@ -43,7 +52,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                         ) : (
                             <i onClick={() => {
                                 if (!isAuthenticated) {
-                                    alert("Please Login to your account");
+                                    toast.error('Please, Login to your account!', {
+                                        position: "top-right",
+                                        autoClose: 4000,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                        theme: "light",
+                                      });
                                     return;
                                 }
                                 cartDispatch({
@@ -104,7 +122,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                 <button
                                     onClick={() => {
                                         if (!isAuthenticated) {
-                                            alert("Please Login to your account");
+                                            toast.error('Please, Login to your account!', {
+                                                position: "top-right",
+                                                autoClose: 4000,
+                                                hideProgressBar: false,
+                                                closeOnClick: true,
+                                                pauseOnHover: true,
+                                                draggable: true,
+                                                progress: undefined,
+                                                theme: "light",
+                                              });
                                             return;
                                         }
                                         cartDispatch({
@@ -129,7 +156,16 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                                 <button
                                     onClick={() => {
                                         if (!isAuthenticated) {
-                                            alert("Please Login to your account");
+                                            toast.error('Please, Login to your account!', {
+                                                position: "top-right",
+                                                autoClose: 4000,
+                                                hideProgressBar: false,
+                                                closeOnClick: true,
+                                                pauseOnHover: true,
+                                                draggable: true,
+                                                progress: undefined,
+                                                theme: "light",
+                                              });
                                             return;
                                         }
                                         cartDispatch({

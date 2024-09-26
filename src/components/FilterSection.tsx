@@ -11,7 +11,7 @@ const FilterSection: React.FC = () => {
   } = useCart();
 
   return (
-    <div className="flex flex-col w-full md:w-1/4 lg:w-3/9 p-4 items-center">
+    <div className="flex flex-col w-full md:w-1/4 lg:w-3/9 p-4 items-start">
       <h4 className="text-2xl font-bold text-center pb-8">Filter Properties</h4>
 
       {/* -----------------------------price range------------------------------------ */}
@@ -75,7 +75,7 @@ const FilterSection: React.FC = () => {
 
       {/* -----------------------------------------amenities----------------------------------- */}
       <span className='py-3'>
-        <p className='text-center pb-1'>Select Amenities : </p>
+        <p className='text-start pb-1'>Select Amenities : </p>
         {/* -------------------GYM--------------------- */}
         <span>
           <input

@@ -45,7 +45,7 @@ export const propertyReducerFunc = (state: PropertyState, action: PropertyAction
             return { ...state, searchQueryForLocation: action.payload };
         case "CLEAR_FILTERS":
             return {
-                underPrice: 1999,
+                underPrice: 2999,
                 isAvailable: false,
                 numberOfBedroom: 2,
                 // amenities
