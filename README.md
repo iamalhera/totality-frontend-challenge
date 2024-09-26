@@ -2,7 +2,7 @@
 StayEase: Property Rental Platform, Totality-Corp Assessment, Frontend Engineer Role
 
 ## Demo link:
-Access this part of application at [StayEase](https://stayease-rental-platform.netlify.app/)
+Access this application at [StayEase](https://stayease-rental-platform.netlify.app/)
 
 ## Table of Content:
 
