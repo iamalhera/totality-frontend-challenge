@@ -96,7 +96,7 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                                     }}
                                     disabled={isAvailable ? false : true}
                                     className={isAvailable ? "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block" : " text-white bg-gray-500 hover:bg-gray-500 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full block"}
-                                >Add to Cart</button>
+                                >Book now</button>
                             )
                     }
                 </div>
