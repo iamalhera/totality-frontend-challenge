@@ -18,22 +18,24 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                 {
                     wishlist.some(prty => prty.id === id) ?
                         (
-                            <i onClick={() => {
-                                console.log("clicked REMOVE_FROM_WISHLIST")
-                                cartDispatch({
-                                    type: "REMOVE_FROM_WISHLIST",
-                                    payload: property
-                                })
-                            }}
+                            <i 
+                            // onClick={() => {
+                            //     console.log("clicked REMOVE_FROM_WISHLIST")
+                            //     cartDispatch({
+                            //         type: "REMOVE_FROM_WISHLIST",
+                            //         payload: property
+                            //     })
+                            // }}
                                 className="fas fa-heart fa-heart-filled text-2xl absolute top-2 right-2 text-red-600 hover:text-red-400 cursor-pointer" title="Remove from wishlist"></i>
                         ) : (
-                            <i onClick={() => {
-                                console.log("clicked ADD_TO_WISHLIST")
-                                cartDispatch({
-                                    type: "ADD_TO_WISHLIST",
-                                    payload: property
-                                })
-                            }}
+                            <i 
+                            // onClick={() => {
+                            //     console.log("clicked ADD_TO_WISHLIST")
+                            //     cartDispatch({
+                            //         type: "ADD_TO_WISHLIST",
+                            //         payload: property
+                            //     })
+                            // }}
                                 className="fas fa-heart text-2xl absolute top-2 right-2 text-red-100 hover:text-red-400  cursor-pointer" title="Add to wishlist"></i>
                         )
                 }
@@ -59,9 +61,9 @@ const CartSingleProperty: React.FC<CartSinglePropertyCardProps> = ({ property })
                     <span className="text-xs text-gray-500 ml-2">({totalRatings} ratings)</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-2xl font-bold text-black mb-2 sm:mb-0">${price}</span>
-                    <div className="flex flex-col items-start sm:items-end">
-                        <span className="text-sm text-gray-600">{totalBedrooms} Bedrooms</span>
+                <span className="text-xl font-semibold text-black mb-2 sm:mb-0">${price}<span className="text-xs font-normal">/week</span></span>
+                <div className="flex flex-col items-start sm:items-end">
+                        <span className="text-sm text-gray-600">{totalBedrooms} { totalBedrooms==1?"Bedroom":"Bedrooms"}</span>
                         <div className="flex flex-wrap justify-start sm:justify-end gap-1 mt-1">
                             {amenities.map((amenity, index) => (
                                 <span key={index} className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded">{amenity}</span>

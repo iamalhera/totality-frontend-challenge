@@ -18,7 +18,7 @@ type CartAction =
     | { type: "REMOVE_FROM_CART"; payload: { id: number } }
     | { type: "ADD_TO_WISHLIST"; payload: Property }
     | { type: "REMOVE_FROM_WISHLIST"; payload: { id: number } }
-    | { type: "PROCEED_TO_CHECKOUT" }
+    | { type: "PROCEED_TO_PAY" }
 
 
 export type { CartState, CartAction, CartContextProps}

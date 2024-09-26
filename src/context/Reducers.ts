@@ -13,8 +13,8 @@ export const cartReducerFunc = (state: CartState, action: CartAction): CartState
             return { ...state, wishlist: [...state.wishlist, { ...action.payload }] };
         case "REMOVE_FROM_WISHLIST":
             return { ...state, wishlist: state.wishlist.filter((c) => c.id !== action.payload.id) };
-        // case "PROCEED_TO_CHECKOUT":
-            // return { ...state, cart: [] };
+        case "PROCEED_TO_PAY":
+            return { ...state, cart: [] };
         default:
             return state;
     }

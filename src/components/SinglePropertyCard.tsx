@@ -56,10 +56,10 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
                     <span className="text-xs text-gray-500 ml-2">({totalRatings} ratings)</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-2xl font-bold text-black mb-2 sm:mb-0">${price}</span>
+                    <span className="text-xl font-semibold text-black mb-2 sm:mb-0">${price}</span><span className="text-xs">/week</span>
                     <div className="flex flex-col items-start sm:items-end">
-                        <span className="text-sm text-gray-600">{totalBedrooms} Bedrooms</span>
-                        <div className="flex flex-wrap justify-start sm:justify-end gap-1 mt-1">
+                    <span className="text-sm text-gray-600">{totalBedrooms} { totalBedrooms==1?"Bedroom":"Bedrooms"}</span>
+                    <div className="flex flex-wrap justify-start sm:justify-end gap-1 mt-1">
                             {amenities.map((amenity, index) => (
                                 <span key={index} className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded">{amenity}</span>
                             ))}
