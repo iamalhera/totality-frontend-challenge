@@ -75,7 +75,7 @@ const Header: React.FC = () => {
               <img
                 onClick={() => setShowDropdown(!showDropdown)}
                 src={user?.picture}
-                alt="User avatar"
+                alt={user?.name}
                 className="w-10 h-10 rounded-full cursor-pointer"
               />
 

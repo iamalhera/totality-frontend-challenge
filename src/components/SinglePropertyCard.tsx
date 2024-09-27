@@ -13,7 +13,7 @@ const SinglePropertyCard: React.FC<SinglePropertyCardProps> = ({ property }) => 
     return (
         <div className="w-full bg-white border border-gray-200 rounded-lg shadow">
             <div className="relative">
-                <img className="w-full h-48 object-cover rounded-t-lg" src={image} alt="Skylight Condo" />
+                <img loading="lazy" className="w-full h-48 object-cover rounded-t-lg" src={image} alt={title} />
                 {/* --------wishlist--------- */}
                 {
                     // demarkation of wishlist product who are in my global state "cartState: {wishlist}"
