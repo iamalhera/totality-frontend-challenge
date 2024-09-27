@@ -75,10 +75,10 @@ I decided to use Tailwind CSS to make the app responsive. Tailwind made it super
 #### TypeScript for Error Handling -
 I went with TypeScript because it helps catch errors early on. That way, I wouldn’t have to deal with as many runtime issues later, which made coding a lot smoother. TypeScript was also useful in avoiding bugs during wishlist and cart management, ensuring that updates to bookings were reflected instantly while allowing users to modify their selections easily.
 
-#### Authentication & State Management
+#### Authentication & State Management -
 For user authentication, I used Auth0 because it’s pretty easy to integrate, and I didn’t want to spend too much time building a custom auth system from scratch. As for managing the app’s state, I stuck with React’s built-in hooks like useState, useContext, and useReducer to keep things simple and straightforward. Managing the state for features like the wishlist, cart, and checkout was critical for ensuring that users could modify their bookings and proceed with payment only after filling out all the necessary information.
 
-#### Notifications & Deployment
+#### Notifications & Deployment -
 
 For notifications, I used react-toastify to show pop-ups whenever necessary, like when items were added to the cart or wishlist. Finally, I deployed the whole project on [Netlify](https://app.netlify.com) for smooth deployment. I also linked it with GitHub to automate the process, ensuring that any changes I made were quickly reflected online.
 
