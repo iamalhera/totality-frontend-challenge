@@ -1,5 +1,5 @@
 # Project Title
-StayEase: Property Rental Platform, Totality-Corp Assessment, Frontend Engineer Role
+**StayEase** : Property Rental Platform, Totality-Corp Assessment, Frontend Engineer Role
 
 ## Demo link:
 Access this application at [StayEase](https://stayease-rental-platform.netlify.app/)
@@ -16,7 +16,7 @@ Access this application at [StayEase](https://stayease-rental-platform.netlify.a
 - [License](#license)
 
 ## About The App
-<strong>StayEase</strong> is a Property rental platform for the users which proposes multiple rental properties and find property of your choice, can manage wishlist, cart management and place bookings And this is an assessment project for <strong>Frontend Engineer</strong> Role.
+**StayEase** is a property rental platform that allows users to explore a variety of rental properties and find the one that suits their needs. Users can manage their wishlist, handle cart management, and place bookings seamlessly. This project serves as an assessment for the **Frontend Engineer** role.
 
 ## Screenshots
 
@@ -40,15 +40,15 @@ Access this application at [StayEase](https://stayease-rental-platform.netlify.a
 ![View](/static/mobile_property_listing.png)
 
 
-## Technologies Used
-- `React` -  library for building UI. 
+## Technologies
+- `React` -  library for building UI
 - `TypeScript` - strongly-typed programming language 
 - `auth0` - for authentication 
 - `React-Router` - library for routing and navigation
 - `Tailwind CSS` - utility-first CSS framework for styling 
 - `react-toastify` - library for customizable toast notifications 
 - `vite` - fast build tool for frontend projects
-- `ESLinst` - tool for identifying and fixing code in JS/TS
+- `ESLint` - tool for identifying and fixing code in JS/TS
 
 
 ## Setup
@@ -61,6 +61,28 @@ Access this application at [StayEase](https://stayease-rental-platform.netlify.a
 - run `npm run dev` in your terminal
 
 ## Approach
+After going through the challenge doc, I figured that building a React-based multi-page platform would be the way to go. So, I used react-router to handle navigation between the main pages like the landing page, property listing (with filters), wishlist, cart, and checkout.
+
+####  Challenges I faced -
+Managing the state of the products was a pretty big challenge, especially when it came to filtering and updating the cart. I also wanted to make sure I was creating reusable components and setting up proper authentication for protected routes. Another key aspect was ensuring the design was responsive, so it worke good enough on different screen sizes, and getting the checkout page functionality right.
+
+#### Data Handling -
+For data, I didn’t have a backend, so I created a dummy JSON file. I stored property images in the assets folder and made up random information for the rental properties, like location, number of bedrooms, amenities, price, and rating. This setup allowed me to test the booking functionality easily. The property listing page was especially tricky because of the complex filtering options. I had to make sure the component was structured efficiently to avoid unnecessary re-renders and to handle multiple filters properly without slowing down the app.
+
+#### Design & Responsiveness - 
+I decided to use Tailwind CSS to make the app responsive. Tailwind made it super easy to build layouts that looks good across different screen sizes. I also used some pre-built components from the internet to speed up development. Responsiveness was particularly important for ensuring that the user experience remained consistent on different devices, especially during actions like adding properties to the wishlist or viewing the cart.
+
+#### TypeScript for Error Handling -
+I went with TypeScript because it helps catch errors early on. That way, I wouldn’t have to deal with as many runtime issues later, which made coding a lot smoother. TypeScript was also useful in avoiding bugs during wishlist and cart management, ensuring that updates to bookings were reflected instantly while allowing users to modify their selections easily.
+
+#### Authentication & State Management
+For user authentication, I used Auth0 because it’s pretty easy to integrate, and I didn’t want to spend too much time building a custom auth system from scratch. As for managing the app’s state, I stuck with React’s built-in hooks like useState, useContext, and useReducer to keep things simple and straightforward. Managing the state for features like the wishlist, cart, and checkout was critical for ensuring that users could modify their bookings and proceed with payment only after filling out all the necessary information.
+
+#### Notifications & Deployment
+
+For notifications, I used react-toastify to show pop-ups whenever necessary, like when items were added to the cart or wishlist. Finally, I deployed the whole project on [Netlify](https://app.netlify.com) for smooth deployment. I also linked it with GitHub to automate the process, ensuring that any changes I made were quickly reflected online.
+
+ 
 
 ## Status
 [StayEase] is `Completed` as per assessments need.
